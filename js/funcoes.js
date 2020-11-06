@@ -4,6 +4,14 @@ function logout(){
     window.location = "index.html";
 }
 
+function verificaLogin(){
+    var objUser = localStorage.getItem("userAlarme");
+
+    if(!objUser){ //Se o objeto não foi recuperado do cache local
+        window.location = "index.html";
+    }
+}
+
 function validar()
 {
     var nome= formuser.nome.value;

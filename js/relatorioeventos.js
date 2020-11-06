@@ -95,18 +95,24 @@ function preencheTabela(lista){
 }
 
 
-function preencheDataTable(lista){
-
-    $(document).ready(function() {
-        $('#tbEventos').DataTable( {
-            data: lista,
-            columns: [
-                { title: "numSeq" },
-                { title: "dtEvento" },
-                { title: "hostname" },
-                { title: "ip" },
-                { title: "nome" },
-            ]
-        } );
-    } );
+function LoadCurrentReport(oResults) {
+ 
+    var aDemoItems  = oResults.lDemographicItems; //
+    var jsonString = JSON.stringify(aDemoItems  ) //for testing
+     
+   //Load  datatable
+    var oTblReport = $("#tblReportResultsDemographics")
+ 
+    oTblReport.DataTable ({
+        "data" : jsonString,
+        "columns" : [
+            { "data" : "patientId" },
+            { "data" : "otherId" },
+            { "data" : "firstName" },
+            { "data" : "lastName" },
+            { "data" : "gender" },
+            { "data" : "dob" },
+            { "data" : "race" }
+        ]
+    });
 }

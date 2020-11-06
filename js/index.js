@@ -2,6 +2,27 @@ function efetuarLogin(){
     var txtLogin = document.getElementById("txtLogin").value;
     var txtSenha = document.getElementById("txtSenha").value;
 
+
+    if(txtLogin == ""){
+        document.getElementById("msgLogin").innerHTML = `
+            <div class="alert alert-danger" role="alert">
+            Informe o login para seguir com a autenticação
+            </div>
+        `;
+        document.getElementById("txtLogin").focus();
+        return false;
+    }
+
+    if(txtSenha == ""){
+        document.getElementById("msgLogin").innerHTML = `
+            <div class="alert alert-danger" role="alert">
+            Informe a senha para seguir com a autenticação
+            </div>
+        `;
+        document.getElementById("txtSenha").focus();
+        return false;
+    }
+
     console.log("Login = " + txtLogin + " | Senha = " + txtSenha);
 
     //Estrturar a Requisição no formato JSON
@@ -30,11 +51,22 @@ function trataResposta(res){
         res.json().then(objUsuario => logarUsuario(objUsuario));
         //document.getElementById("msg").innerHTML = "Usuário Conectado com Sucesso";
     }else if(res.status == 401){
-        document.getElementById("msg").innerHTML = "Senha inválida";
+        document.getElementById("msgLogin").innerHTML = `
+            <div class="alert alert-primary" role="alert">
+            Senha inválida!
+            </div>
+        `;
+
     }else if(res.status == 404){
-        document.getElementById("msg").innerHTML = "Usuário não encontrado";
+        document.getElementById("msgLogin").innerHTML = `
+        <div class="alert alert-primary" role="alert">
+        Login não encontrado!
+        </div>`;
     }else{
-        document.getElementById("msg").innerHTML = "Erros desconhecido";
+        document.getElementById("msgLogin").innerHTML = `
+        <div class="alert alert-primary" role="alert">
+        Erro desconhecido!
+        </div>`;
     }
 }
 
@@ -44,3 +76,6 @@ function logarUsuario(objUsuario){
     window.location = "selecao.html";
 }
 
+function limpaMsgLogin(){
+    document.getElementById("msgLogin").innerHTML ="";
+}
