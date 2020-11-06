@@ -59,5 +59,28 @@ function preencheTabela(lista){
 
 
     document.getElementById("relatorio").innerHTML = txtTabela;
+    
+    $('#tabelaAlarmes').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        language : {
+            "lengthMenu": "Exibindo _MENU_ registros por página",
+            "zeroRecords": "Nenhum registro encontrado",
+            "info": "Exibindo página _PAGE_ de _PAGES_",
+            "infoEmpty": "Sem registros para exibir",
+            "infoFiltered": "(localizamos _MAX_ registros total)",
+            "search":         "Filtrar:",
+            "paginate": {
+                "first":      "Primeiro",
+                "last":       "Último",
+                "next":       "Próximo",
+                "previous":   "Anterior"
+            }       
+        }   
+    } );
+
+
 }
 

@@ -23,7 +23,7 @@ function efetuarLogin(){
         return false;
     }
 
-    console.log("Login = " + txtLogin + " | Senha = " + txtSenha);
+    //console.log("Login = " + txtLogin + " | Senha = " + txtSenha);
 
     //Estrturar a Requisição no formato JSON
     var msgBody = {

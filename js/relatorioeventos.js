@@ -30,6 +30,7 @@ function gerarRelatorio(){
     fetch("http://localhost:8088/eventos/intervalo", cabecalho)
     .then(res => res.json()) //se receber resposta extrai JSON do Body
     .then(lista => preencheTabela(lista)); //com a extração, receber a lista de eventos
+    //.then(lista => LoadCurrentReport(lista)); //com a extração, receber a lista de eventos
     //.then(lista => preencheRelatorio(lista)); //com a extração, receber a lista de eventos
 
 }
@@ -76,43 +77,30 @@ function preencheTabela(lista){
                     </table>`;
 
     txtTabela += `<BR>`;
-    txtTabela += `<script>
-                    $(document).ready(function(){
-                        $('#tabelaEventos').DataTable({
-                            "language": {
-                                "lengthMenu": "Mostrando _MENU_ registros por página",
-                                "zeroRecords": "Nada encontrado",
-                                "info": "Mostrando página _PAGE_ de _PAGES_",
-                                "infoEmpty": "Nenhum registro disponível",
-                                "infoFiltered": "(filtrado de _MAX_ registros no total)"
-                            }
-                        });
-                    });
-                    </script>`;
-
 
     document.getElementById("relatorio").innerHTML = txtTabela;
-}
+    
+    $('#tabelaEventos').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        language : {
+            "lengthMenu": "Exibindo _MENU_ registros por página",
+            "zeroRecords": "Nenhum registro encontrado",
+            "info": "Exibindo página _PAGE_ de _PAGES_",
+            "infoEmpty": "Sem registros para exibir",
+            "infoFiltered": "(localizamos _MAX_ registros total)",
+            "search":         "Filtrar:",
+            "paginate": {
+                "first":      "Primeiro",
+                "last":       "Último",
+                "next":       "Próximo",
+                "previous":   "Anterior"
+            }       
+        }        
+    } );
 
 
-function LoadCurrentReport(oResults) {
- 
-    var aDemoItems  = oResults.lDemographicItems; //
-    var jsonString = JSON.stringify(aDemoItems  ) //for testing
-     
-   //Load  datatable
-    var oTblReport = $("#tblReportResultsDemographics")
- 
-    oTblReport.DataTable ({
-        "data" : jsonString,
-        "columns" : [
-            { "data" : "patientId" },
-            { "data" : "otherId" },
-            { "data" : "firstName" },
-            { "data" : "lastName" },
-            { "data" : "gender" },
-            { "data" : "dob" },
-            { "data" : "race" }
-        ]
-    });
 }
+
