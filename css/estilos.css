@@ -1,0 +1,89 @@
+p{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Verdana;
+    color: darkgrey;
+}
+body{
+    background-color: rgb(255,255,255);
+}
+
+.menu{
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: green;
+}
+
+.lista{
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+label{
+    font-size: 14px;
+    font-family: Geneva;
+    color: darkgreen;
+}
+
+#formulario_cadastro{
+    background-color:lightgray;
+
+}
+
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+  }
+  
+/*
+.campo_nome{
+    color: red;
+    background-color: darkkhaki;
+    font-family: Arial;
+    position: absolute;
+    left: 90px;
+    width: 300px;
+}
+
+.campo_email{
+    color: red;
+    background-color: darkkhaki;
+    font-family: Arial;
+    position: absolute;
+    left: 90px;
+    width: 350px;
+}
+
+.campo_senha{
+    color: red;
+    background-color: darkkhaki;
+    font-family: Arial;
+    position: absolute;
+    left: 90px;
+    width: 150px;
+}
+*/
+
+.container{
+    border: 3px solid brown;
+    width: 300px;
+}
+
+.div1{
+    background-color: red;
+}
+
+.div2{
+    background-color: yellow;
+}
+
+.div3{
+    background-color: green;
+}
+
+.div4{
+    background-color:blue;
+}
+
